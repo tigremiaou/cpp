@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/21 13:51:26 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/09/21 18:51:36 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/09/22 17:54:12 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ std::string Asking(std::string const &question)
 	while (value.empty())
 	{
 		std::cout << question;
-		std::getline(std::cin, value);
+		if (!std::getline(std::cin, value))
+			exit(0);
 	}
 	return value;
 }
@@ -31,7 +32,8 @@ int	main(void)
 	while (1)
 	{
 		std::cout << "Enter a command: ";
-		std::getline(std::cin, cmd);
+		if (!std::getline(std::cin, cmd))
+			break;
 		if (cmd == "ADD")
 		{
 			Contact c;
